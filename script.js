@@ -20,13 +20,6 @@ window.addEventListener('click', function(event) {
 document.getElementById('registration-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const formData = {
-        fullName: this.fullName.value,
-        dob: this.dob.value,
-        email: this.email.value,
-        mobile: this.mobile.value
-    };
-
     const formMessage = document.getElementById('form-message');
     const webAppURL = "https://script.google.com/macros/s/AKfycbyfysQH5RYskQVxTg9_ssF0gsQhqtEDPhfO9Dj24ZDuDiCfektVxG9zqA7X81kqq06r/exec";
 
@@ -34,33 +27,52 @@ document.getElementById('registration-form').addEventListener('submit', function
     formMessage.textContent = 'جاري التسجيل...';
     formMessage.style.color = '#FF2DFC';
 
-    // Create XML HTTP request
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', webAppURL, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    // Create form data
+    const formData = new FormData();
+    formData.append('fullName', this.fullName.value);
+    formData.append('dob', this.dob.value);
+    formData.append('email', this.email.value);
+    formData.append('mobile', this.mobile.value);
 
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                try {
-                    const response = JSON.parse(xhr.responseText);
-                    formMessage.textContent = response.message;
-                    formMessage.style.color = '#4CAF50';
-                    e.target.reset();
-                    setTimeout(() => {
-                        document.getElementById('register-popup').style.display = 'none';
-                    }, 2000);
-                } catch (error) {
-                    formMessage.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
-                    formMessage.style.color = '#FF2DFC';
-                }
-            } else {
-                formMessage.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
-                formMessage.style.color = '#FF2DFC';
-            }
-        }
+    // Create a temporary invisible iframe
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    // Create a form inside the iframe
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = webAppURL;
+
+    // Add form data as hidden inputs
+    for (let pair of formData.entries()) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = pair[0];
+        input.value = pair[1];
+        form.appendChild(input);
+    }
+
+    // Add form to iframe and submit
+    iframe.contentDocument.body.appendChild(form);
+    form.submit();
+
+    // Handle response
+    iframe.onload = function() {
+        formMessage.textContent = 'تم التسجيل بنجاح!';
+        formMessage.style.color = '#4CAF50';
+        e.target.reset();
+        
+        // Remove iframe after submission
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+            document.getElementById('register-popup').style.display = 'none';
+        }, 2000);
     };
 
-    // Send the request
-    xhr.send(JSON.stringify(formData));
+    iframe.onerror = function() {
+        formMessage.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+        formMessage.style.color = '#FF2DFC';
+        document.body.removeChild(iframe);
+    };
 });
