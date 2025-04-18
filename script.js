@@ -27,52 +27,37 @@ document.getElementById('registration-form').addEventListener('submit', function
     formMessage.textContent = 'جاري التسجيل...';
     formMessage.style.color = '#FF2DFC';
 
-    // Create form data
-    const formData = new FormData();
-    formData.append('fullName', this.fullName.value);
-    formData.append('dob', this.dob.value);
-    formData.append('email', this.email.value);
-    formData.append('mobile', this.mobile.value);
+    // Create JSON data
+    const jsonData = {
+        fullName: this.fullName.value,
+        dob: this.dob.value,
+        email: this.email.value,
+        mobile: this.mobile.value
+    };
 
-    // Create a temporary invisible iframe
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    // Create a form inside the iframe
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = webAppURL;
-
-    // Add form data as hidden inputs
-    for (let pair of formData.entries()) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = pair[0];
-        input.value = pair[1];
-        form.appendChild(input);
-    }
-
-    // Add form to iframe and submit
-    iframe.contentDocument.body.appendChild(form);
-    form.submit();
-
-    // Handle response
-    iframe.onload = function() {
+    fetch(webAppURL, {
+        method: 'POST',
+        mode: 'no-cors', // This is key to avoid CORS issues
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(() => {
+        // Since we're using no-cors, we can't read the response
+        // So we'll just assume success if no error occurred
         formMessage.textContent = 'تم التسجيل بنجاح!';
         formMessage.style.color = '#4CAF50';
         e.target.reset();
         
-        // Remove iframe after submission
         setTimeout(() => {
-            document.body.removeChild(iframe);
             document.getElementById('register-popup').style.display = 'none';
         }, 2000);
-    };
-
-    iframe.onerror = function() {
+    })
+    .catch(error => {
+        console.error('Error:', error);
         formMessage.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
         formMessage.style.color = '#FF2DFC';
-        document.body.removeChild(iframe);
-    };
+    });
 });
