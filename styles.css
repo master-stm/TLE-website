@@ -109,3 +109,130 @@ body {
     transform: translateY(0);
   }
 }
+
+.btn-register {
+    /* display: inline-block; */
+    /* position: relative; right: 0; */
+    padding: 12px 30px;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, #41007a, #FF2DFC);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 45, 252, 0.3);
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 45, 252, 0.4);
+    background: linear-gradient(135deg, #2d0048, #ff00ff);
+}
+
+.btn-register:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(255, 45, 252, 0.3);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.popup-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #41007a, #26004d);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    border: 2px solid #FF2DFC;
+    box-shadow: 0 0 30px rgba(255, 45, 252, 0.4);
+    z-index: 10000;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #FF2DFC;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+form input {
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 2px solid #ff2dfc;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px rgba(255, 45, 252, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+form button[type="submit"] {
+    background: linear-gradient(135deg, #41007a, #FF2DFC);
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 45, 252, 0.2);
+}
+
+form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 45, 252, 0.4);
+    background: linear-gradient(135deg, #2d0048, #ff00ff);
+}
+
+#form-message {
+    color: #ff2dfc;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 10px;
+}

@@ -7,9 +7,36 @@
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+  <div id="register-popup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <h2>نموذج التسجيل</h2>
+  <form id="registration-form">
+    <label>الاسم الكامل:
+      <input type="text" name="fullName" required>
+    </label>
+    <label>تاريخ الميلاد:
+      <input type="date" name="dob" required>
+    </label>
+    <label>البريد الإلكتروني:
+      <input type="email" name="email" required>
+    </label>
+    <label>رقم الهاتف مع كود الدولة:
+      <input type="tel" name="mobile" placeholder="+96512345678" required>
+    </label>
+    <button type="submit">إرسال</button>
+    <p id="form-message"></p>
+  </form>
+    </div>
+  </div>
   <header class="hero animate-in">
     <h1>بطولة المستقبل الإلكتروني</h1>
     <p>ESPORT GAMING – E-FUTURE CHAMPIONSHIP</p>
+    <button class="btn-register" onclick="togglePopup()">
+      <a style="color: aliceblue; text-decoration: none;">سجل الآن</a>
+    </button>
+
+    
   </header>
 
   <section class="section animate-in delay-1">
@@ -54,5 +81,6 @@
   <footer class="footer animate-in delay-5">
     <p>THANK YOU – PROFESSIONAL ESPORT GAMERS</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
