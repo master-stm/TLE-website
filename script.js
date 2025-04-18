@@ -17,7 +17,7 @@ window.addEventListener('click', function(event) {
 });
 
 // Form submission handler
-document.getElementById('registration-form').addEventListener('submit', async function(e) {
+document.getElementById('registration-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const formData = {
@@ -28,31 +28,39 @@ document.getElementById('registration-form').addEventListener('submit', async fu
     };
 
     const formMessage = document.getElementById('form-message');
-    const wepAppURL = "https://script.google.com/macros/s/AKfycbyfysQH5RYskQVxTg9_ssF0gsQhqtEDPhfO9Dj24ZDuDiCfektVxG9zqA7X81kqq06r/exec"
-    try {
-        // Replace with your Google Apps Script Web App URL
-        const response = await fetch(wepAppURL, {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+    const webAppURL = "https://script.google.com/macros/s/AKfycbyfysQH5RYskQVxTg9_ssF0gsQhqtEDPhfO9Dj24ZDuDiCfektVxG9zqA7X81kqq06r/exec";
 
-        const result = await response.json();
-        
-        if (result.status === 'success') {
-            formMessage.textContent = result.message;
-            formMessage.style.color = '#4CAF50';
-            this.reset();
-            setTimeout(() => {
-                document.getElementById('register-popup').style.display = 'none';
-            }, 2000);
-        } else {
-            throw new Error('Registration failed');
+    // Show loading message
+    formMessage.textContent = 'جاري التسجيل...';
+    formMessage.style.color = '#FF2DFC';
+
+    // Create XML HTTP request
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', webAppURL, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    formMessage.textContent = response.message;
+                    formMessage.style.color = '#4CAF50';
+                    e.target.reset();
+                    setTimeout(() => {
+                        document.getElementById('register-popup').style.display = 'none';
+                    }, 2000);
+                } catch (error) {
+                    formMessage.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+                    formMessage.style.color = '#FF2DFC';
+                }
+            } else {
+                formMessage.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+                formMessage.style.color = '#FF2DFC';
+            }
         }
-    } catch (error) {
-        formMessage.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
-        formMessage.style.color = '#FF2DFC';
-    }
+    };
+
+    // Send the request
+    xhr.send(JSON.stringify(formData));
 });
