@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  background-color: #0c0016;
+  color: #fff;
+  direction: rtl;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+.hero {
+  background: linear-gradient(135deg, #41007a, #26004d);
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  color: #ff2dfc;
+  text-shadow: 0 0 10px #ff2dfc;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: #ccc;
+  letter-spacing: 1px;
+}
+
+.section {
+  padding: 50px 20px;
+  background-color: #2d0048;
+  border-top: 3px solid #a400ff;
+  transition: background-color 0.3s ease;
+}
+
+.section.dark {
+  background-color: #1a002e;
+}
+
+.section h2 {
+  color: #ff9dff;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ff2dfc;
+  margin-top: 10px;
+}
+
+.section ul {
+  list-style: none;
+  padding-right: 0;
+}
+
+.section li {
+  margin: 12px 0;
+  position: relative;
+  padding-right: 20px;
+}
+
+.section li::before {
+  content: '★';
+  position: absolute;
+  right: 0;
+  color: #ff2dfc;
+}
+
+.glow {
+  color: #fff;
+  text-shadow: 0 0 8px #ff00ff, 0 0 12px #ff00ff;
+  font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  background-color: #0f001c;
+  color: #aaa;
+  font-size: 1.2rem;
+  border-top: 2px solid #440066;
+}
+
+/* Animations */
+.animate-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+.delay-4 { animation-delay: 1.2s; }
+.delay-5 { animation-delay: 1.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
