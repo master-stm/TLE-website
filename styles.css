@@ -9,7 +9,10 @@ body {
   line-height: 1.8;
   overflow-x: hidden;
 }
-
+ .logo{
+  height: 15em;
+  width: 25em;
+ }
 .hero {
   background: linear-gradient(135deg, #41007a, #26004d);
   text-align: center;
@@ -235,4 +238,45 @@ form button[type="submit"]:hover {
     font-size: 1rem;
     text-align: center;
     margin-top: 10px;
+}
+
+.sponsors {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #41007a, #26004d);
+}
+
+.sponsors h2 {
+    color: #ff9dff;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.sponsor-logo {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
