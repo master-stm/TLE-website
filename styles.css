@@ -18,6 +18,7 @@ body {
   margin: 1em auto;
   width: 15em;
   height: auto;
+  /* background-color: #0c0016; */
  }
 .top-logo {
     position: absolute;
@@ -72,10 +73,12 @@ body {
 }
 .header-section{
   background: url('./assets/images/header-section-bg.png') no-repeat center center;
+  background-size: cover;
   background-size: fill;
   opacity: 0.9;
   position: relative;
   z-index: 1;
+  
 
   &::before {
     content: '';
@@ -117,6 +120,24 @@ body {
 }
 .features-section {
   background: url('./assets/images/features-section-bg.png') no-repeat center center;
+  background-size: cover;
+  padding: 100px 20px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  
+}
+.supervision-section {
+  background: url('./assets/images/supervision-section-bg.png') no-repeat center center;
+  background-size: cover;
+  padding: 100px 20px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  
+}
+.sponsors-section {
+  background: url('./assets/images/sponsors-section-bg.jpg') no-repeat center center;
   background-size: cover;
   padding: 100px 20px;
   text-align: center;
@@ -334,7 +355,7 @@ form button[type="submit"]:hover {
 .sponsors {
     text-align: center;
     padding: 50px 20px;
-    background: linear-gradient(135deg, #41007a, #26004d);
+    /* background: linear-gradient(135deg, #41007a, #26004d); */
 }
 
 .sponsors h2 {
