@@ -22,6 +22,8 @@ body {
   height: auto;
  }
 .hero {
+  display: grid;
+  grid-template-columns: 1fr;
   background: linear-gradient(135deg, #41007a, #26004d);
   text-align: center;
   padding: 80px 20px;
@@ -122,8 +124,8 @@ body {
 }
 
 .btn-register {
-    /* display: inline-block; */
-    /* position: relative; right: 0; */
+    margin: 1em auto 0;
+  width: 15%;
     padding: 12px 30px;
     text-decoration: none;
     color: #ffffff;
@@ -262,9 +264,10 @@ form button[type="submit"]:hover {
 
 .sponsors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1em;
-    max-width: 20em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+    gap: 1.5em;
+    max-width: 27em;
     margin: 0 auto;
     align-items: center;
 }
