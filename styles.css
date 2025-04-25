@@ -11,23 +11,51 @@ body {
 }
  .logo{
   margin: 1em auto;
-  width: 15em;
+  width: 20em;
   height: auto;
-  /* filter: brightness(0) invert(1);
-  opacity: 0.8;  */
  }
  .supervisor-logo{
   margin: 1em auto;
   width: 15em;
   height: auto;
  }
-.hero {
+.top-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.grid-container {
   display: grid;
-  grid-template-columns: 1fr;
-  background: linear-gradient(135deg, #41007a, #26004d);
-  text-align: center;
-  padding: 80px 20px;
-  position: relative;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  justify-items: center;
+}
+
+.tle-logo {
+    width: 10em;
+    height: auto;
+    filter: brightness(0) invert(1); 
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.tle-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Update existing hero class to accommodate the logo */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, #41007a, #26004d);
+    text-align: center;
+    padding: 120px 20px 80px; /* Increased top padding for logo */
 }
 
 .hero h1 {
@@ -264,7 +292,7 @@ form button[type="submit"]:hover {
 
 .sponsors-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 2em;
     gap: 1.5em;
     max-width: 27em;
