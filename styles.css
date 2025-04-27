@@ -124,7 +124,6 @@ body {
   text-align: center;
   color: #fff;
   position: relative;
-  
 }
 .supervision-section {
   background: url('./assets/images/supervision-section-bg.png') no-repeat center center;
@@ -305,13 +304,13 @@ body {
 
 .sponsors-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 25px;
   align-items: center;
   justify-items: center;
 }
 .sponsor-logo {
-  width: 15em;
+  width: 12.5em;
   height: auto;
   transition: all 0.3s ease;
 }
