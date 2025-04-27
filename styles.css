@@ -15,10 +15,9 @@ body {
   height: auto;
  }
  .supervisor-logo{
-  margin: 1em auto;
-  width: 15em;
-  height: auto;
-  /* background-color: #0c0016; */
+  margin: 0 auto;
+  width: auto;
+  height: 15em;
  }
 .top-logo {
     position: absolute;
@@ -130,11 +129,10 @@ body {
 .supervision-section {
   background: url('./assets/images/supervision-section-bg.png') no-repeat center center;
   background-size: cover;
-  padding: 100px 20px;
+  padding: 0;
   text-align: center;
   color: #fff;
   position: relative;
-  
 }
 .sponsors-section {
   background: url('./assets/images/sponsors-section-bg.jpg') no-repeat center center;
@@ -303,4 +301,21 @@ body {
     border: 2px solid #FF2DFC;
     box-shadow: 0 0 20px rgba(255, 45, 252, 0.3);
     text-align: center;
+}
+
+.sponsors-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+.sponsor-logo {
+  width: 15em;
+  height: auto;
+  transition: all 0.3s ease;
+}
+.sponsor-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
 }
