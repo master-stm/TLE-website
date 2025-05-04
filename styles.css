@@ -302,12 +302,15 @@ body {
     text-align: center;
 }
 
-.sponsors-grid{
+.sponsors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
+  gap: 50px;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .sponsor-logo {
   width: 12.5em;
